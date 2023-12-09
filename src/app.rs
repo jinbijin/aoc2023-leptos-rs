@@ -1,3 +1,6 @@
+mod problems;
+mod math;
+
 use crate::error_template::{AppError, ErrorTemplate};
 use leptos::*;
 use leptos_meta::*;
@@ -9,16 +12,8 @@ pub fn App() -> impl IntoView {
     provide_meta_context();
 
     view! {
-
-
-        // injects a stylesheet into the document <head>
-        // id=leptos means cargo-leptos will hot-reload this stylesheet
         <Stylesheet id="leptos" href="/pkg/aoc2023.css"/>
-
-        // sets the document title
-        <Title text="Welcome to Leptos"/>
-
-        // content for this welcome page
+        <Title text="Advent of Code 2023"/>
         <Router fallback=|| {
             let mut outside_errors = Errors::default();
             outside_errors.insert_with_default_key(AppError::NotFound);
@@ -29,22 +24,32 @@ pub fn App() -> impl IntoView {
         }>
             <main>
                 <Routes>
-                    <Route path="" view=HomePage/>
+                    <Route path="" view=PageLayout>
+                        <problems::Routes />
+                        <Route path="" view=HomePage />
+                    </Route>
                 </Routes>
             </main>
         </Router>
     }
 }
 
-/// Renders the home page of your application.
+#[component]
+fn PageLayout() -> impl IntoView {
+    view! {
+        <h1>"Advent of Code 2023"</h1>
+        <nav>
+            <ul>
+                <li><A href="problems">Problems</A></li>
+            </ul>
+        </nav>
+        <Outlet />
+    }
+}
+
 #[component]
 fn HomePage() -> impl IntoView {
-    // Creates a reactive value to update the button
-    let (count, set_count) = create_signal(0);
-    let on_click = move |_| set_count.update(|count| *count += 1);
-
     view! {
-        <h1>"Welcome to Leptos!"</h1>
-        <button on:click=on_click>"Click Me: " {count}</button>
+        <p>"Welcome to Advent of Code 2023!"</p>
     }
 }

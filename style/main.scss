@@ -1,4 +1,78 @@
+:root {
+	--spacer-sm: 0.5rem;
+	--spacer-xs: 0.25rem;
+}
+
 body {
 	font-family: sans-serif;
-	text-align: center;
+}
+
+nav {
+	> ul {
+		padding-inline-start: 0;
+
+		> li {
+			display: inline flow;
+			list-style: none;
+			padding: var(--spacer-sm);
+
+			> a {
+				padding: var(--spacer-sm);
+			}
+		}
+	}
+}
+
+form {
+	> div {
+		display: block flow;
+
+		+ * {
+			margin-block-start: var(--spacer-sm);
+		}
+
+		* + * {
+			margin-block-start: var(--spacer-xs);
+		}
+
+		> label {
+			display: block flow;
+			font-size: small;
+			font-weight: bold;
+		}
+	}
+
+	input[type="submit"] {
+		font-size: large;
+		padding: var(--spacer-sm);
+	}
+}
+
+input {
+	font-size: large;
+	padding: var(--spacer-sm);
+
+	&[readonly] {
+		background-color: lightgray;
+		border-radius: 4px;
+	}
+
+	&.numeric {
+		text-align: end;
+	}
+}
+
+select {
+	font-size: large;
+	padding: var(--spacer-sm);
+}
+
+textarea#problem-input {
+	font-size: initial;
+	white-space: pre;
+	overflow-wrap: normal;
+	overflow-x: scroll;
+	resize: none;
+	width: 100%;
+	height: 50vh;
 }
