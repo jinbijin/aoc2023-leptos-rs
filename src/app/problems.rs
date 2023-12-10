@@ -1,4 +1,5 @@
 mod haunted_wasteland;
+mod pipe_maze;
 
 use leptos::*;
 use leptos_router::*;
@@ -15,6 +16,7 @@ pub fn Routes() -> impl IntoView {
     view! {
         <Route path="problems" view=Problems>
             <Route path="haunted-wasteland" view=haunted_wasteland::Main />
+            <Route path="pipe-maze" view=pipe_maze::Main />
             <Route path="" view=NoProblem />
         </Route>
     }
@@ -26,6 +28,7 @@ pub fn Problems() -> impl IntoView {
         <nav>
             <ul>
                 <li><A href="haunted-wasteland">"Day 8: Haunted Wasteland"</A></li>
+                <li><A href="pipe-maze">"Day 10: Pipe Maze"</A></li>
             </ul>
         </nav>
         <Outlet />
