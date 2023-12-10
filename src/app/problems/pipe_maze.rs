@@ -1,13 +1,22 @@
+#[cfg(feature="ssr")]
 mod grid_coords;
+#[cfg(feature="ssr")]
 mod grid_direction;
+#[cfg(feature="ssr")]
 mod grid;
+#[cfg(feature="ssr")]
 mod grid_loop;
+#[cfg(feature="ssr")]
 mod pipe;
+#[cfg(feature="ssr")]
 mod pipe_location;
+#[cfg(feature="ssr")]
 mod grid_region;
 
 use leptos::*;
 use super::{ProblemPart, ProblemForm};
+
+#[cfg(feature="ssr")]
 use self::{grid::Grid, grid_loop::GridLoop, grid_region::{AsGridRegionIter, GridRegionType}, pipe::Pipe};
 
 #[server(PipeMaze)]

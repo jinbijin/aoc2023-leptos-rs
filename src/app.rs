@@ -1,4 +1,5 @@
 mod problems;
+#[cfg(feature="ssr")]
 mod math;
 
 use crate::error_template::{AppError, ErrorTemplate};

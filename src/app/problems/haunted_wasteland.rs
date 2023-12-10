@@ -1,15 +1,23 @@
+#[cfg(feature="ssr")]
 mod direction;
+#[cfg(feature="ssr")]
 mod node;
+#[cfg(feature="ssr")]
 mod eventually_periodic;
+#[cfg(feature="ssr")]
 mod network_path;
+#[cfg(feature="ssr")]
 mod crossroads;
+#[cfg(feature="ssr")]
 mod network;
 
 use leptos::*;
 use super::{ProblemPart, ProblemForm};
 
+#[cfg(feature="ssr")]
 use self::{direction::Direction, node::Node, network::Network};
 
+#[cfg(feature="ssr")]
 fn solve_1(network: Network, directions: Vec<Direction>) -> Option<usize> {
     let node = Node::new("AAA");
     let path = network.get_path(node, &directions);
@@ -18,6 +26,7 @@ fn solve_1(network: Network, directions: Vec<Direction>) -> Option<usize> {
     indices.get_first_index()
 }
 
+#[cfg(feature="ssr")]
 fn solve_2(network: Network, directions: Vec<Direction>) -> Option<usize> {
     let nodes = network.get_starting_nodes();
 
