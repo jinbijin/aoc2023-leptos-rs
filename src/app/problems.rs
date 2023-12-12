@@ -1,12 +1,13 @@
 mod haunted_wasteland;
 mod pipe_maze;
 mod cosmic_expansion;
+mod hot_springs;
 
 use leptos::*;
 use leptos_router::*;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 enum ProblemPart {
     Part1,
     Part2
@@ -19,6 +20,7 @@ pub fn Routes() -> impl IntoView {
             <Route path="haunted-wasteland" view=haunted_wasteland::Main />
             <Route path="pipe-maze" view=pipe_maze::Main />
             <Route path="cosmic-expansion" view=cosmic_expansion::Main />
+            <Route path="hot-springs" view=hot_springs::Main />
             <Route path="" view=NoProblem />
         </Route>
     }
@@ -32,6 +34,7 @@ pub fn Problems() -> impl IntoView {
                 <li><A href="haunted-wasteland">"Day 8: Haunted Wasteland"</A></li>
                 <li><A href="pipe-maze">"Day 10: Pipe Maze"</A></li>
                 <li><A href="cosmic-expansion">"Day 11: Cosmic Expansion"</A></li>
+                <li><A href="hot-springs">"Day 12: Hot Springs"</A></li>
             </ul>
         </nav>
         <Outlet />

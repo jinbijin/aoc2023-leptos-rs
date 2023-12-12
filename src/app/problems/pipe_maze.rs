@@ -46,6 +46,6 @@ pub fn Main() -> impl IntoView {
     let action = create_server_action::<PipeMaze>();
 
     view! {
-        <ProblemForm name="Day 10: PipeMaze" action=action />
+        <ProblemForm name="Day 10: Pipe Maze" action=action />
     }
 }
