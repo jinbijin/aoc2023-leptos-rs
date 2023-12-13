@@ -2,6 +2,7 @@ mod haunted_wasteland;
 mod pipe_maze;
 mod cosmic_expansion;
 mod hot_springs;
+mod point_of_incidence;
 
 use leptos::*;
 use leptos_router::*;
@@ -21,6 +22,7 @@ pub fn Routes() -> impl IntoView {
             <Route path="pipe-maze" view=pipe_maze::Main />
             <Route path="cosmic-expansion" view=cosmic_expansion::Main />
             <Route path="hot-springs" view=hot_springs::Main />
+            <Route path="point-of-incidence" view=point_of_incidence::Main />
             <Route path="" view=NoProblem />
         </Route>
     }
@@ -35,6 +37,7 @@ pub fn Problems() -> impl IntoView {
                 <li><A href="pipe-maze">"Day 10: Pipe Maze"</A></li>
                 <li><A href="cosmic-expansion">"Day 11: Cosmic Expansion"</A></li>
                 <li><A href="hot-springs">"Day 12: Hot Springs"</A></li>
+                <li><A href="point-of-incidence">"Day 13: Point of Incidence"</A></li>
             </ul>
         </nav>
         <Outlet />
