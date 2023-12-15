@@ -4,6 +4,7 @@ mod cosmic_expansion;
 mod hot_springs;
 mod point_of_incidence;
 mod parabolic_reflector_dish;
+mod lens_library;
 
 use leptos::*;
 use leptos_router::*;
@@ -25,6 +26,7 @@ pub fn Routes() -> impl IntoView {
             <Route path="hot-springs" view=hot_springs::Main />
             <Route path="point-of-incidence" view=point_of_incidence::Main />
             <Route path="parabolic-reflector-dish" view=parabolic_reflector_dish::Main />
+            <Route path="lens-library" view=lens_library::Main />
             <Route path="" view=NoProblem />
         </Route>
     }
@@ -41,6 +43,7 @@ pub fn Problems() -> impl IntoView {
                 <li><A href="hot-springs">"Day 12: Hot Springs"</A></li>
                 <li><A href="point-of-incidence">"Day 13: Point of Incidence"</A></li>
                 <li><A href="parabolic-reflector-dish">"Day 14: Parabolic Reflector Dish"</A></li>
+                <li><A href="lens-library">"Day 15: Lens Library"</A></li>
             </ul>
         </nav>
         <Outlet />
