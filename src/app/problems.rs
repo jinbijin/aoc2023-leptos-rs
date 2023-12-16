@@ -5,6 +5,7 @@ mod hot_springs;
 mod point_of_incidence;
 mod parabolic_reflector_dish;
 mod lens_library;
+mod the_floor_will_be_lava;
 
 #[cfg(feature = "ssr")]
 use std::fmt::Display;
@@ -91,6 +92,7 @@ pub fn Routes() -> impl IntoView {
             <Route path="point-of-incidence" view=point_of_incidence::Main />
             <Route path="parabolic-reflector-dish" view=parabolic_reflector_dish::Main />
             <Route path="lens-library" view=lens_library::Main />
+            <Route path="the-floor-will-be-lava" view=the_floor_will_be_lava::Main />
             <Route path="" view=NoProblem />
         </Route>
     }
@@ -108,6 +110,7 @@ pub fn Problems() -> impl IntoView {
                 <li><A href="point-of-incidence">"Day 13: Point of Incidence"</A></li>
                 <li><A href="parabolic-reflector-dish">"Day 14: Parabolic Reflector Dish"</A></li>
                 <li><A href="lens-library">"Day 15: Lens Library"</A></li>
+                <li><A href="the-floor-will-be-lava">"Day 16: The Floor Will Be Lava"</A></li>
             </ul>
         </nav>
         <Outlet />
