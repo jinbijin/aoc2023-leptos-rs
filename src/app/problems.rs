@@ -6,6 +6,7 @@ mod point_of_incidence;
 mod parabolic_reflector_dish;
 mod lens_library;
 mod the_floor_will_be_lava;
+mod clumsy_crucible;
 
 #[cfg(feature = "ssr")]
 use std::fmt::Display;
@@ -93,6 +94,7 @@ pub fn Routes() -> impl IntoView {
             <Route path="parabolic-reflector-dish" view=parabolic_reflector_dish::Main />
             <Route path="lens-library" view=lens_library::Main />
             <Route path="the-floor-will-be-lava" view=the_floor_will_be_lava::Main />
+            <Route path="clumsy-crucible" view=clumsy_crucible::Main />
             <Route path="" view=NoProblem />
         </Route>
     }
@@ -111,6 +113,7 @@ pub fn Problems() -> impl IntoView {
                 <li><A href="parabolic-reflector-dish">"Day 14: Parabolic Reflector Dish"</A></li>
                 <li><A href="lens-library">"Day 15: Lens Library"</A></li>
                 <li><A href="the-floor-will-be-lava">"Day 16: The Floor Will Be Lava"</A></li>
+                <li><A href="clumsy-crucible">"Day 17: Clumsy Crucible"</A></li>
             </ul>
         </nav>
         <Outlet />
