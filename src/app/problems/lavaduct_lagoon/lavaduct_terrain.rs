@@ -2,34 +2,28 @@
 // Conversion: 1 meter = 2 units
 // The starting point is the grid point (0, 0), with the grid square between (-1, -1) and (1, 1) already cut out.
 
-use std::ops::Deref;
-use super::dig_plan::{DigDirection, DigPlanStep, DigPlan};
+use std::collections::BTreeSet;
+use super::dig_plan::{DigDirection, DigPlanStep};
 
 /// A measuring line
 ///
-/// It describes the line of (x, y) such that x - y == offset.
-/// It is used only for odd offsets; such lines will always intersect all segments transversally.
+/// It describes a horizontal line with fixed y.
+/// It is used only for odd y; such lines will always intersect all segments transversally.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 struct MeasuringLine {
-    offset: isize,
+    y: isize,
 }
 
 impl MeasuringLine {
     fn intersection(&self, segment: &TrenchEdgeSegment) -> Option<TerrainCoords> {
         match segment {
             TrenchEdgeSegment::Vertical { x, y_from, y_to } =>
-                if *x - *y_to <= self.offset && self.offset <= *x - *y_from {
-                    Some(TerrainCoords::new(*x, *x - self.offset))
+                if *y_from <= self.y && self.y <= *y_to {
+                    Some(TerrainCoords::new(*x, self.y))
                 } else {
                     None
                 },
-            TrenchEdgeSegment::Horizontal { x_from, x_to, y } => {
-                if *x_from - *y <= self.offset && self.offset <= *x_to - y {
-                    Some(TerrainCoords::new(*y + self.offset, *y))
-                } else {
-                    None
-                }
-            },
+            TrenchEdgeSegment::Horizontal { x_from: _, x_to: _, y: _ } => None,
         }
     }
 
@@ -76,20 +70,6 @@ impl TrenchEdgeSegment {
             TrenchEdgeSegment::Horizontal { x_from, x_to, y: _ } => *x_to - *x_from,
         }
     }
-
-    fn min_offset(&self) -> isize {
-        match self {
-            TrenchEdgeSegment::Vertical { x, y_from: _, y_to} => *x - *y_to,
-            TrenchEdgeSegment::Horizontal { x_from, x_to: _, y } => *x_from - *y,
-        }
-    }
-
-    fn max_offset(&self) -> isize {
-        match self {
-            TrenchEdgeSegment::Vertical { x, y_from, y_to: _ } => *x - *y_from,
-            TrenchEdgeSegment::Horizontal { x_from: _, x_to, y } => *x_to - *y,
-        }
-    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
@@ -117,17 +97,20 @@ impl TrenchEdge {
     }
 
     pub fn area(&self) -> isize {
-        let minimum_offset = self.0.iter().map(|s| s.min_offset()).min().unwrap();
-        let maximum_offset = self.0.iter().map(|s| s.max_offset()).max().unwrap();
+        let ys: BTreeSet<_> = self.0.iter()
+            .filter_map(|s| match s {
+                TrenchEdgeSegment::Horizontal { x_from: _, x_to: _, y } => Some(*y),
+                TrenchEdgeSegment::Vertical { x: _, y_from: _, y_to: _ } => None,
+            })
+            .collect();
 
-        let mut double_area = 0isize;
-
-        for offset in ((minimum_offset + 1)..=(maximum_offset - 1)).step_by(2) {
-            let measuring_line = MeasuringLine { offset };
-            double_area += measuring_line.len_inside(self);
-        }
-
-        double_area / 2
+        ys.iter().zip(ys.iter().skip(1))
+            .map(|(y_from, y_to)| (*y_from, *y_to))
+            .map(move |(y_from, y_to)| {
+                let measuring_line = MeasuringLine { y: y_from + 1 };
+                (y_to - y_from) * measuring_line.len_inside(self) / 4
+            })
+            .sum()
     }
 }
 

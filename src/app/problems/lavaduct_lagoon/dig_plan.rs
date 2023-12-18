@@ -85,7 +85,7 @@ impl FromStr for DigPlanStep {
         let (length, color) = rest.split_once(' ').ok_or_else(|| error)?;
 
         let direction = direction.parse::<DigDirection>()?;
-        let length = length.parse::<isize>().map_err(|x| error)?;
+        let length = length.parse::<isize>().map_err(|_| error)?;
         let color = color.parse::<Color>()?;
 
         Ok(Self {
