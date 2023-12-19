@@ -8,6 +8,7 @@ mod lens_library;
 mod the_floor_will_be_lava;
 mod clumsy_crucible;
 mod lavaduct_lagoon;
+mod aplenty;
 
 #[cfg(feature = "ssr")]
 use std::fmt::Display;
@@ -97,6 +98,7 @@ pub fn Routes() -> impl IntoView {
             <Route path="the-floor-will-be-lava" view=the_floor_will_be_lava::Main />
             <Route path="clumsy-crucible" view=clumsy_crucible::Main />
             <Route path="lavaduct-lagoon" view=lavaduct_lagoon::Main />
+            <Route path="aplenty" view=aplenty::Main />
             <Route path="" view=NoProblem />
         </Route>
     }
@@ -117,6 +119,7 @@ pub fn Problems() -> impl IntoView {
                 <li><A href="the-floor-will-be-lava">"Day 16: The Floor Will Be Lava"</A></li>
                 <li><A href="clumsy-crucible">"Day 17: Clumsy Crucible"</A></li>
                 <li><A href="lavaduct-lagoon">"Day 18: Lavaduct Lagoon"</A></li>
+                <li><A href="aplenty">"Day 19: Aplenty"</A></li>
             </ul>
         </nav>
         <Outlet />
