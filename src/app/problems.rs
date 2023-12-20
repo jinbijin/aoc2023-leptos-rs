@@ -9,6 +9,7 @@ mod the_floor_will_be_lava;
 mod clumsy_crucible;
 mod lavaduct_lagoon;
 mod aplenty;
+mod pulse_propagation;
 
 #[cfg(feature = "ssr")]
 use std::fmt::Display;
@@ -99,6 +100,7 @@ pub fn Routes() -> impl IntoView {
             <Route path="clumsy-crucible" view=clumsy_crucible::Main />
             <Route path="lavaduct-lagoon" view=lavaduct_lagoon::Main />
             <Route path="aplenty" view=aplenty::Main />
+            <Route path="pulse-propagation" view=pulse_propagation::Main />
             <Route path="" view=NoProblem />
         </Route>
     }
@@ -120,6 +122,7 @@ pub fn Problems() -> impl IntoView {
                 <li><A href="clumsy-crucible">"Day 17: Clumsy Crucible"</A></li>
                 <li><A href="lavaduct-lagoon">"Day 18: Lavaduct Lagoon"</A></li>
                 <li><A href="aplenty">"Day 19: Aplenty"</A></li>
+                <li><A href="pulse-propagation">"Day 20: Pulse Propagation"</A></li>
             </ul>
         </nav>
         <Outlet />
