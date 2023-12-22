@@ -15,10 +15,6 @@ impl Garden {
         self.width
     }
 
-    pub fn height(&self) -> usize {
-        self.height
-    }
-
     pub fn start(&self) -> (usize, usize) {
         self.start
     }
@@ -57,7 +53,7 @@ impl Garden {
 
     pub fn is_in_initial_grid(&self, coords: (usize, usize)) -> bool {
         let (x, y) = coords;
-        x >= 0 && x < self.width && y >= 0 && y < self.height
+        x < self.width && y < self.height
     }
 
     pub fn adjacent_vertices(&self, coords: (usize, usize)) -> Vec<(usize, usize)>{

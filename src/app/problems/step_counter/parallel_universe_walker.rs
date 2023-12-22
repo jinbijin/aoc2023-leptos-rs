@@ -40,7 +40,7 @@ impl<'a> ParallelUniverseWalker<'a> {
         }
 
         self.plots.iter()
-            .filter(move |(plot, d)| (**d % 2) == (count % 2))
+            .filter(move |(_, d)| (**d % 2) == (count % 2))
             .count()
     }
 

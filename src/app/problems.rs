@@ -11,6 +11,7 @@ mod lavaduct_lagoon;
 mod aplenty;
 mod pulse_propagation;
 mod step_counter;
+mod sand_slabs;
 
 #[cfg(feature = "ssr")]
 use std::fmt::Display;
@@ -103,6 +104,7 @@ pub fn Routes() -> impl IntoView {
             <Route path="aplenty" view=aplenty::Main />
             <Route path="pulse-propagation" view=pulse_propagation::Main />
             <Route path="step-counter" view=step_counter::Main />
+            <Route path="sand-slabs" view=sand_slabs::Main />
             <Route path="" view=NoProblem />
         </Route>
     }
@@ -126,6 +128,7 @@ pub fn Problems() -> impl IntoView {
                 <li><A href="aplenty">"Day 19: Aplenty"</A></li>
                 <li><A href="pulse-propagation">"Day 20: Pulse Propagation"</A></li>
                 <li><A href="step-counter">"Day 21: Step Counter"</A></li>
+                <li><A href="sand-slabs">"Day 22: Sand Slabs"</A></li>
             </ul>
         </nav>
         <Outlet />
