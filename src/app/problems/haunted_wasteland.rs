@@ -11,11 +11,10 @@ mod crossroads;
 #[cfg(feature="ssr")]
 mod network;
 
-use leptos::*;
-use super::{ProblemPart, ProblemForm};
-
 #[cfg(feature="ssr")]
 use self::{direction::Direction, node::Node, network::Network};
+
+use crate::as_server_fn_with_timing;
 
 #[cfg(feature="ssr")]
 fn solve_1(network: Network, directions: Vec<Direction>) -> Option<usize> {
@@ -41,36 +40,28 @@ fn solve_2(network: Network, directions: Vec<Direction>) -> Option<usize> {
     product.get_first_index()
 }
 
-#[server(HauntedWasteland)]
-pub async fn solve(part: ProblemPart, input: String) -> Result<String, ServerFnError> {
-    let (directions, network) = input.split_once("\n\n").unwrap();
-    let directions = directions.chars().map(|x| -> Direction { x.into() }).collect::<Vec<Direction>>();
+as_server_fn_with_timing! {
+    fn solve(part: ProblemPart, input: String) -> String {
+        let (directions, network) = input.split_once("\n\n").unwrap();
+        let directions = directions.chars().map(|x| -> Direction { x.into() }).collect::<Vec<Direction>>();
 
-    let network: Network = network.into();
+        let network: Network = network.into();
 
-    match part {
-        ProblemPart::Part1 => {
-            if let Some(solution) = solve_1(network, directions) {
-                Ok(solution.to_string())
-            } else {
-                Ok(format!("Never"))
-            }
-        },
-        ProblemPart::Part2 => {
-            if let Some(solution) = solve_2(network, directions) {
-                Ok(solution.to_string())
-            } else {
-                Ok(format!("Never"))
+        match part {
+            ProblemPart::Part1 => {
+                if let Some(solution) = solve_1(network, directions) {
+                    solution.to_string()
+                } else {
+                    "Never".to_string()
+                }
+            },
+            ProblemPart::Part2 => {
+                if let Some(solution) = solve_2(network, directions) {
+                    solution.to_string()
+                } else {
+                    "Never".to_string()
+                }
             }
         }
-    }
-}
-
-#[component]
-pub fn Main() -> impl IntoView {
-    let action = create_server_action::<HauntedWasteland>();
-
-    view! {
-        <ProblemForm name="Day 8: Haunted Wasteland" action=action />
     }
 }
