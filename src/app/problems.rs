@@ -20,6 +20,7 @@ mod wait_for_it;
 mod if_you_give_seed_fertilizer;
 mod scratchcards;
 mod gear_ratios;
+mod cube_conundrum;
 
 use leptos::*;
 use leptos_router::*;
@@ -67,6 +68,7 @@ macro_rules! problem_routes_def {
 }
 
 problem_routes_def! {
+    "Day 2: Cube Conundrum" at cube_conundrum,
     "Day 3: Gear Ratios" at gear_ratios,
     "Day 4: Scratchcards" at scratchcards,
     "Day 5: If You Give A Seed A Fertilizer" at if_you_give_seed_fertilizer,
