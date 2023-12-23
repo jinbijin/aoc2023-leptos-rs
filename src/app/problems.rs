@@ -18,6 +18,7 @@ mod mirage_maintenance;
 mod camel_cards;
 mod wait_for_it;
 mod if_you_give_seed_fertilizer;
+mod scratchcards;
 
 use leptos::*;
 use leptos_router::*;
@@ -65,6 +66,7 @@ macro_rules! problem_routes_def {
 }
 
 problem_routes_def! {
+    "Day 4: Scratchcards" at scratchcards,
     "Day 5: If You Give A Seed A Fertilizer" at if_you_give_seed_fertilizer,
     "Day 6: Wait For It" at wait_for_it,
     "Day 7: Camel Cards" at camel_cards,
