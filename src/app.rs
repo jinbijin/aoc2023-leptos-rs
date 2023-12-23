@@ -22,7 +22,6 @@ pub fn App() -> impl IntoView {
             view! {
                 <ErrorTemplate outside_errors/>
             }
-            .into_view()
         }>
             <main>
                 <Routes>

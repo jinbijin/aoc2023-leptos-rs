@@ -14,6 +14,7 @@ mod step_counter;
 mod sand_slabs;
 mod timing;
 mod long_walk;
+mod mirage_maintenance;
 
 use leptos::*;
 use leptos_router::*;
@@ -62,6 +63,7 @@ macro_rules! problem_routes_def {
 
 problem_routes_def! {
     "Day 8: Haunted Wasteland" at haunted_wasteland,
+    "Day 9: Mirage Maintenance" at mirage_maintenance,
     "Day 10: Pipe Maze" at pipe_maze,
     "Day 11: Cosmic Expansion" at cosmic_expansion,
     "Day 12: Hot Springs" at hot_springs,
