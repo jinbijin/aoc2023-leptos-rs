@@ -19,6 +19,7 @@ mod camel_cards;
 mod wait_for_it;
 mod if_you_give_seed_fertilizer;
 mod scratchcards;
+mod gear_ratios;
 
 use leptos::*;
 use leptos_router::*;
@@ -66,6 +67,7 @@ macro_rules! problem_routes_def {
 }
 
 problem_routes_def! {
+    "Day 3: Gear Ratios" at gear_ratios,
     "Day 4: Scratchcards" at scratchcards,
     "Day 5: If You Give A Seed A Fertilizer" at if_you_give_seed_fertilizer,
     "Day 6: Wait For It" at wait_for_it,
