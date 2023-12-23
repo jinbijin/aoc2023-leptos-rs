@@ -13,6 +13,7 @@ mod pulse_propagation;
 mod step_counter;
 mod sand_slabs;
 mod timing;
+mod long_walk;
 
 use leptos::*;
 use leptos_router::*;
@@ -73,7 +74,8 @@ problem_routes_def! {
     "Day 19: Aplenty" at aplenty,
     "Day 20: Pulse Propagation" at pulse_propagation,
     "Day 21: Step Counter" at step_counter,
-    "Day 22: Sand Slabs" at sand_slabs
+    "Day 22: Sand Slabs" at sand_slabs,
+    "Day 23: A Long Walk" at long_walk
 }
 
 #[component]

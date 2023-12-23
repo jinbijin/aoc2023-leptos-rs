@@ -1,6 +1,7 @@
-mod problems;
-#[cfg(feature="ssr")]
+mod common;
+#[cfg(feature = "ssr")]
 mod math;
+mod problems;
 
 use crate::error_template::{AppError, ErrorTemplate};
 use leptos::*;
