@@ -21,6 +21,7 @@ mod if_you_give_seed_fertilizer;
 mod scratchcards;
 mod gear_ratios;
 mod cube_conundrum;
+mod trebuchet;
 
 use leptos::*;
 use leptos_router::*;
@@ -68,6 +69,7 @@ macro_rules! problem_routes_def {
 }
 
 problem_routes_def! {
+    "Day 1: Trebuchet?!" at trebuchet,
     "Day 2: Cube Conundrum" at cube_conundrum,
     "Day 3: Gear Ratios" at gear_ratios,
     "Day 4: Scratchcards" at scratchcards,
