@@ -27,7 +27,6 @@ impl Timeline {
 #[derive(Debug, Clone)]
 pub struct InstabilityTimeline {
     timeline_stack: Vec<Timeline>,
-    top_level_diff: isize,
 }
 
 impl InstabilityTimeline {
@@ -44,7 +43,6 @@ impl InstabilityTimeline {
 
         InstabilityTimeline {
             timeline_stack,
-            top_level_diff: top_level_diff.unwrap()
         }
     }
 

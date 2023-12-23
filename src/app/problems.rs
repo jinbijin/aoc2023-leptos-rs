@@ -15,6 +15,7 @@ mod sand_slabs;
 mod timing;
 mod long_walk;
 mod mirage_maintenance;
+mod camel_cards;
 
 use leptos::*;
 use leptos_router::*;
@@ -62,6 +63,7 @@ macro_rules! problem_routes_def {
 }
 
 problem_routes_def! {
+    "Day 7: Camel Cards" at camel_cards,
     "Day 8: Haunted Wasteland" at haunted_wasteland,
     "Day 9: Mirage Maintenance" at mirage_maintenance,
     "Day 10: Pipe Maze" at pipe_maze,
