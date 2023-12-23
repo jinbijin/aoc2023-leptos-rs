@@ -16,6 +16,7 @@ mod timing;
 mod long_walk;
 mod mirage_maintenance;
 mod camel_cards;
+mod wait_for_it;
 
 use leptos::*;
 use leptos_router::*;
@@ -63,6 +64,7 @@ macro_rules! problem_routes_def {
 }
 
 problem_routes_def! {
+    "Day 6: Wait For It" at wait_for_it,
     "Day 7: Camel Cards" at camel_cards,
     "Day 8: Haunted Wasteland" at haunted_wasteland,
     "Day 9: Mirage Maintenance" at mirage_maintenance,
