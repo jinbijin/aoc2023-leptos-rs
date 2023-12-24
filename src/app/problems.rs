@@ -22,6 +22,7 @@ mod scratchcards;
 mod gear_ratios;
 mod cube_conundrum;
 mod trebuchet;
+mod never_tell_me_the_odds;
 
 use leptos::*;
 use leptos_router::*;
@@ -91,7 +92,8 @@ problem_routes_def! {
     "Day 20: Pulse Propagation" at pulse_propagation,
     "Day 21: Step Counter" at step_counter,
     "Day 22: Sand Slabs" at sand_slabs,
-    "Day 23: A Long Walk" at long_walk
+    "Day 23: A Long Walk" at long_walk,
+    "Day 24: Never Tell Me The Odds" at never_tell_me_the_odds
 }
 
 #[component]
