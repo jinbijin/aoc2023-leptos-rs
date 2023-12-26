@@ -2,7 +2,7 @@
 mod graph;
 
 #[cfg(feature = "ssr")]
-pub use graph::DistanceHashGraph;
+pub use graph::{AdjacencyHashGraph, CycleResult, DistanceHashGraph};
 
 #[macro_export]
 macro_rules! create_formatted_flat_enum {
