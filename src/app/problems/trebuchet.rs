@@ -1,8 +1,8 @@
 #[cfg(feature = "ssr")]
-mod number_map;
+mod trebuchet_state;
 
 #[cfg(feature = "ssr")]
-use number_map::create_number_map;
+use trebuchet_state::read_line_value;
 
 use crate::as_server_fn_with_timing;
 
@@ -18,18 +18,7 @@ as_server_fn_with_timing! {
                 }).sum()
             },
             ProblemPart::Part2 => {
-                let number_map = create_number_map();
-                input.lines().map(|line| {
-                    let first_digit = *number_map.iter()
-                        .filter(|(key, _)| line.contains(**key))
-                        .min_by(|(key_x, _), (key_y, _)| line.find(**key_x).unwrap().cmp(&line.find(**key_y).unwrap())).unwrap()
-                        .1;
-                    let last_digit = *number_map.iter()
-                        .filter(|(key, _)| line.contains(**key))
-                        .max_by(|(key_x, _), (key_y, _)| line.rfind(**key_x).unwrap().cmp(&line.rfind(**key_y).unwrap())).unwrap()
-                        .1;
-                    first_digit * 10 + last_digit
-                }).sum()
+                input.lines().map(read_line_value).sum()
             }
         }
     }
